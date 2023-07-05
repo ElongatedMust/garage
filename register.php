@@ -1,5 +1,7 @@
 
-
+<?php 
+require ('connections/db.register.php')
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

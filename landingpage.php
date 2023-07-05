@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php require ('connections/db.connect.php') ?>
-    <link rel="stylesheet" href="landingpage.css">
+    <link rel="stylesheet" href="Styling/landingpage.css">
 </head>
 <body>
     <div>
