@@ -44,7 +44,7 @@
         <div>
         <?php
             try {
-                $query = "SELECT i.id, i.image_path, t.price, t.year, t.km FROM image AS i JOIN car_listing AS t ON i.id = t.image_id";
+                $query = "SELECT * FROM images JOIN car_listing AS t ON i.id = t.image_id";
                 $statement = $pdo->query($query);
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     $id = $row['id'];
@@ -70,3 +70,7 @@
     </div>
 </body>
 </html>
+
+<?php echo '<pre>';
+    var_dump($result);
+    echo '</pre>'; ?>

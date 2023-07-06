@@ -27,12 +27,12 @@ class Database {
     }
 }
 
-// Usage
+/*// Usage
 $database = new Database();
 $pdo = $database->getPDO();
 
 // Use $pdo to perform database operations
 
-$database->closeConnection();
+$database->closeConnection();*/
 
 

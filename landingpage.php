@@ -9,43 +9,26 @@
 <body>
     <div>
     <?php
-    try {
-        $query = "SELECT id, image_path FROM image";
-        $statement = $pdo->query($query);
-        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $id = $row['id'];
-            $imagePath = $row['image_path'];
-            // Output the image on the page with the CSS class
-            echo '<div class="image-container">';
-            echo '<img src="' . $imagePath . '" alt="Image" class="image-size" />';
-            echo '<a href="delete.php?id=' . $id . '">Delete</a>';
-            echo '</div>';
-        }
-    } catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
-    }
-
-    try {
-        $query ="SELECT id, price, year, km FROM car_listing";
-        $statement = $pdo->query($query);
-        while ($row =$statement->fetch(PDO::FETCH_ASSOC)) {
-            $id =$row['id'];
-            $price =$row['price'];
-            $year =$row['year'];
-            $km =$row['km'];
-            //outputting data
-            echo '<div class="car-listings">';
-            echo '<ul>';
-            echo '<li>"' . $price . '"</li>';
-            echo '<li>' . $year . '</li>';
-            echo '<li>' . $km . '</li>';
-            echo '</ul>';
-            echo '</div>';
-        }
-    }  catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
-    }
+        $sql = "SELECT * FROM car_listing INNER JOIN images ON car_listing.id = images.car_listing_id";
+        $db = new Database;
+        $pdo = $db->getPDO();
+        $cars = $pdo->query($sql);
+        $result = $cars->fetchAll();
+        
     ?>
+    
+    
+        <div>
+            <?php
+            foreach ($result as $item) {
+                echo '<p>' . $item['model'] . '</p>';
+                echo '<img src=".' . $item['path_image'] . ' " class="image-size" >';
+            }?>
+   
+        </div>
     </div>
+    
+ 
+
 </body>
 </html>
