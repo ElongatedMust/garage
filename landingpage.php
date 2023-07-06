@@ -24,6 +24,27 @@
     } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
     }
+
+    try {
+        $query ="SELECT id, price, year, km FROM car_listing";
+        $statement = $pdo->query($query);
+        while ($row =$statement->fetch(PDO::FETCH_ASSOC)) {
+            $id =$row['id'];
+            $price =$row['price'];
+            $year =$row['year'];
+            $km =$row['km'];
+            //outputting data
+            echo '<div class="car-listings">';
+            echo '<ul>';
+            echo '<li>"' . $price . '"</li>';
+            echo '<li>' . $year . '</li>';
+            echo '<li>' . $km . '</li>';
+            echo '</ul>';
+            echo '</div>';
+        }
+    }  catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
     ?>
     </div>
 </body>

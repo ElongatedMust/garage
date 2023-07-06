@@ -13,8 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Image was saved successfully
             $imagePath = $targetFile;
             
-            // Include the database connection file
-            require('connections/db.connect.php');
+           
             
             // Insert the image path into the database
             $sql = "INSERT INTO image (image_path) VALUES (:imagePath)";
