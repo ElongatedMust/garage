@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Acceuil</title>
     <?php require ('connections/db.connect.php') ?>
     <link rel="stylesheet" href="Styling/landingpage.css">
 </head>
@@ -23,6 +23,9 @@
             foreach ($result as $item) {
                 echo '<p>' . $item['model'] . '</p>';
                 echo '<img src=".' . $item['path_image'] . ' " class="image-size" >';
+                echo '<p>$' . $item['price'] . '</p>';
+                echo '<p>' . $item['year'] . '</p>';
+                echo '<p>$' . $item['km'] . '</p>';
             }?>
    
         </div>
