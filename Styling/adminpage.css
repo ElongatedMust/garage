@@ -1,4 +1,4 @@
-.dashboard {
+/* .dashboard {
     display: flex;
     text-align: center;
     color: red;
@@ -8,10 +8,67 @@
 
 p {
     padding: 5%;
+} */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
 }
 
-.listing {
-    display: flex;
-    justify-content: space-between;
-    color: blue;
+.main-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* .Navigate {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.Navigate a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+} */
+
+.dashboard {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard p {
+    margin: 10px 0;
+}
+
+.dashboard form {
+    display: inline;
+}
+
+.dashboard input[type="submit"] {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dashboard input[type="submit"]:hover {
+    background-color: #cc0000;
 }

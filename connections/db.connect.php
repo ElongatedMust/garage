@@ -27,12 +27,12 @@ class Database {
     }
 }
 
-/*// Usage
+// Usage
 $database = new Database();
 $pdo = $database->getPDO();
-
+$isLoggedIn = isset($_SESSION['user_id']);
 // Use $pdo to perform database operations
 
-$database->closeConnection();*/
+$database->closeConnection();
 
 

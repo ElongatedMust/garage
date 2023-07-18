@@ -45,6 +45,7 @@ if (isset($_POST['submit'])) {
             $statement->bindValue(':password', $password_hash);
             $statement->execute();        
             echo 'User registered successfully.';
+            header("Location: login.php");
            // header("location:login.php");//
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
