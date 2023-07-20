@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $imagePath = '/' . $targetFile; // Add a forward slash to the beginning of the path
 
             // Include the database connection file
-            require('connections/db.connect.php');
+            // require('connections/db.connect.php');
+            require('./header.php');
 
             // Insert the image path and car_listing_id into the database
             $carListingId = $_POST['car_listing_id'];

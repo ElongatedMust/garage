@@ -1,5 +1,5 @@
 <?php
-require ('db.connect.php');
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve the form data
     $model = $_POST['model'];

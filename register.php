@@ -1,6 +1,7 @@
 
 <?php 
-require ('connections/db.register.php')
+require ('connections/db.register.php');
+require ('header.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@ require ('connections/db.register.php')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="../styling/register.css">
+    <link rel="stylesheet" href="styling/register.css">
 
 </head>
 <body>

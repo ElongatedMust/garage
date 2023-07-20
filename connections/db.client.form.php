@@ -1,6 +1,6 @@
 <?php 
 
-require ('db.connect.php');
+// require ('db.connect.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve the form data
     $price = $_POST['price'];

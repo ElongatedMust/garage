@@ -1,0 +1,52 @@
+body {
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+  background-color: #555;
+}

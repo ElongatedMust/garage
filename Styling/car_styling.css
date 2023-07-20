@@ -1,40 +1,95 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .form-container {
-    width: 400px;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-container input[type="text"],
-  .form-container input[type="submit"] {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .form-container input[type="submit"] {
-    background-color: #333;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .form-container input[type="submit"]:hover {
-    background-color: #555;
-  }
-  
-  /* Optional: Additional styling for placeholder text */
-  .form-container input[type="text"]::placeholder {
-    color: #999;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form-container {
+  width: 400px;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-container input[type="text"],
+.form-container input[type="file"],
+.form-container input[type="submit"] {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+  background-color: #555;
+}
+
+/* Optional: Additional styling for placeholder text */
+.form-container input[type="text"]::placeholder {
+  color: #999;
+}
+
+.error-messages {
+  list-style-type: none;
+  padding: 0;
+}
+
+.error-messages li {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.carousel {
+  width: 100%;
+  position: relative;
+}
+
+.carousel-inner {
+  display: flex;
+  overflow: hidden;
+}
+
+.carousel-item {
+  flex-shrink: 0;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.carousel-control-prev {
+  left: 20px;
+}
+
+.carousel-control-next {
+  right: 20px;
+}
+
   

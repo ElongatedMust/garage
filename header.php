@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    require ('connections/db.connect.php');
     $isLoggedIn = isset($_SESSION['user_id']);
     $isAdmin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
     
@@ -27,9 +27,19 @@
 
         <div id="rightS">
             <ul id="rightNav">
+                 <li>
+                    <?php if ($isLoggedIn): ?>
+                        <a href="adminpage.php">Dashboard</a>
+                    <?php endif; ?>
+                </li>
                 <li>
                     <?php if ($isLoggedIn): ?>
                         <a href="car_upload.php">Voiture</a>
+                    <?php endif; ?>
+                </li>
+                <li>
+                    <?php if ($isAdmin): ?>
+                        <a href="register.php">AAAAAAAAAA</a>
                     <?php endif; ?>
                 </li>
                 <li>
@@ -38,22 +48,24 @@
                     <?php endif; ?>
                 </li>
                 <li>
-                    <?php if ($isAdmin): ?>
-                        <a href="register.php">Comptes</a>
-                    <?php endif; ?>
-                </li>
-                <li>
                     <?php if ($isLoggedIn): ?>
-                        <a href="adminpage.php">Dashboard</a>
+                        <a href="protected.php">compte</a>
                     <?php endif; ?>
                 </li>
+               
                 <li>
                     <?php if ($isLoggedIn): ?>
                         <a href="logout.php">Deconnexion</a>
                     <?php else: ?>
                         <a href="login.php">Connexion</a>
                     <?php endif; ?>
-                </li>
+
+                 <li>
+                    
+                    <a href="client.form.php">Contact</a>
+                 
+                 </li>
+                
             </ul>
         </div>
     </div>

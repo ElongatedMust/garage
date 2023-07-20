@@ -1,5 +1,9 @@
 <?php
+
+require ('header.php');
 require('connections/db.admin.php');
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $listingId = $_POST['listing_id'];
@@ -22,16 +26,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: adminpage.php');
     exit;
 }
+
 ?>
                                                                                                                                                                                                                                                                                                                                                                                     
-<head>
-    <title>admin page</title>
+                                                                                                                                                                                                                                                                                                                                                                                    <head>
+    <title>Admin Page</title>
     <link rel="stylesheet" href="Styling/adminpage.css">
 </head>
 <main>
-    <?php require 'header.php'; ?>
    
-    <div>
+    <div class="dashboard">
+        <h1>Admin Dashboard</h1>
         <?php
         $sql = "SELECT * FROM car_listing ";
         $db = new Database;
@@ -39,27 +44,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cars = $pdo->query($sql);
         $result = $cars->fetchAll();
 
-        foreach ($result as $item) {
-            echo '<div class="dashboard">';
-            echo '<p>' . $item['id'] . '</p>';
-
-            // Check if the necessary keys exist in the $item array
-            if (isset($item['model']) && isset($item['price']) && isset($item['year']) && isset($item['km'])) {
-                echo '<p>' . $item['model'] . '</p>';
-                echo '<p>' . $item['price'] . '</p>';
-                echo '<p>' . $item['year'] . '</p>';
-                echo '<p>' . $item['km'] . '</p>';
-            } else {
-                echo '<p>Missing information</p>';
+        if (!$result) {
+            echo '<p>No car listings found.</p>';
+        } else {
+            echo '<table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Model</th>
+                        <th>Price</th>
+                        <th>Year</th>
+                        <th>KM</th>
+                        <th>Actions</th>
+                    </tr>';
+            foreach ($result as $item) {
+                echo '<tr>
+                        <td>' . $item['id'] . '</td>
+                        <td>' . $item['model'] . '</td>
+                        <td>' . $item['price'] . '</td>
+                        <td>' . $item['year'] . '</td>
+                        <td>' . $item['km'] . '</td>
+                        <td>
+                            <form action="deletions/delete_listing.php" method="post">
+                                <input type="hidden" name="listing_id" value="' . $item['id'] . '">
+                                <input type="submit" name="delete" value="Delete">
+                            </form>
+                            <form action="edit_listing.php" method="post">
+                                <input type="hidden" name="listing_id" value="' . $item['id'] . '">
+                                <input type="submit" name="edit" value="Edit">
+                            </form>
+                        </td>
+                    </tr>';
             }
+            echo '</table>';
+        }
 
-            echo '<form action="deletions/delete_listing.php" method="post">';
-
-            echo '<input type="hidden" name="listing_id" value="' . $item['id'] . '">';
-            echo '<input type="submit" value="Delete">';
-            echo '</form>';
-            echo '</div>';
+        if ($isAdmin) {
+            echo '<a href="register.php" class="add-button admin-button">Add User</a>';
         }
         ?>
     </div>
 </main>
+

@@ -1,7 +1,7 @@
 <?php
-   
+    require('header.php');
     require('connections/db.image.post.php');
-    require('header.php')
+    
 ?>
 <link rel="stylesheet" href="styling/car_styling.css">
 

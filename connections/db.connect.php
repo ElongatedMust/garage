@@ -34,5 +34,5 @@ $isLoggedIn = isset($_SESSION['user_id']);
 // Use $pdo to perform database operations
 
 $database->closeConnection();
-
+session_start();
 

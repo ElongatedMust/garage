@@ -4,24 +4,28 @@ require ('connections/db.client.form.php');
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Client Review Form</title>
-  <link rel="stylesheet" type="text/css" href="styling/clientformstyling.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Support Form</title>
+  <link rel="stylesheet" href="styling/client_form.css">
 </head>
 <body>
-  <h1>Client Review Form</h1>
-  <form method="POST" action="submit.php">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" required>
-
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required>
-
-    <label for="review">Review:</label>
-    <textarea name="review" id="review" required></textarea>
-
-    <input type="submit" value="Submit">
-  </form>
+  <div class="container">
+    <h1>Contact Us</h1>
+    <form action="process_form.php" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </body>
 </html>
