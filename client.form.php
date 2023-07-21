@@ -1,6 +1,5 @@
 <?php
-require ('header.php');
-require ('connections/db.client.form.php');
+require ('connections/db.process_form.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,18 +12,25 @@ require ('connections/db.client.form.php');
 </head>
 <body>
   <div class="container">
-    <h1>Contact Us</h1>
-    <form action="process_form.php" method="POST">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+    <h1>Contactez nous</h1>
+    <form  method="POST">
+      <label for="name">Nom:</label>
+      <input type="text" id="nom" name="nom" required>
+
+      <label for="name">Prenom:</label>
+      <input type="text" id="prenom" name="prenom" required>
+
       
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required>
+
+      <label for="name">Numero:</label>
+      <input type="text" id="numero" name="numero" required>
       
       <label for="message">Message:</label>
       <textarea id="message" name="message" rows="5" required></textarea>
       
-      <button type="submit">Submit</button>
+      <button type="submit">Envoyer</button>
     </form>
   </div>
 </body>

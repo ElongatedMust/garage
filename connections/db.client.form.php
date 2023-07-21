@@ -1,23 +1,61 @@
-<?php 
+<?php
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Gather form data and sanitize it
+  $name = sanitizeInput($_POST['name']);
+  $prenom = sanitizeInput($_POST['prenom']);
+  $email = sanitizeInput($_POST['email']);
+  $numero = sanitizeInput($_POST['numero']);
+  $message = sanitizeInput($_POST['message']);
 
-// require ('db.connect.php');
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve the form data
-    $price = $_POST['price'];
-    $year = $_POST['year'];
-    $km = $_POST['km'];
+  // Validate email format
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die("Invalid email format");
+  }
 
-    // Insert the car data into the database
-    $sql = "INSERT INTO car_listing (price, year, km) VALUES (:price, :year, :km)";
-    $statement = $pdo->prepare($sql);
-    $statement->bindParam(':price', $price, PDO::PARAM_INT);
-    $statement->bindParam(':year', $year, PDO::PARAM_STR);
-    $statement->bindParam(':km', $km, PDO::PARAM_STR);
+  
+  $host = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "projectgarage";
 
-    if ($statement->execute()) {
-        echo 'Car data has been inserted into the database.';
-    } else {
-        echo 'There was an error inserting the car data into the database: ' . $pdo->errorInfo()[2];
-    }
+  try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    // Set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Prepare the SQL query with placeholders
+    $sql = "INSERT INTO your_table_name (name, prenom, email, numero, message) VALUES (:name, :prenom, :email, :numero, :message)";
+    
+    // Prepare the statement
+    $stmt = $conn->prepare($sql);
+    
+    // Bind parameters with values
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':prenom', $prenom);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':numero', $numero);
+    $stmt->bindParam(':message', $message);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Success message
+    echo "Form data has been successfully submitted!";
+  } catch (PDOException $e) {
+    // Error handling
+    die("Error: " . $e->getMessage());
+  }
+
+  // Close the connection
+  $conn = null;
+}
+
+// Function to sanitize user input
+function sanitizeInput($input) {
+  $input = trim($input);
+  $input = stripslashes($input);
+  $input = htmlspecialchars($input);
+  return $input;
 }
 ?>

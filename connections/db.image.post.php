@@ -1,4 +1,5 @@
 <?php
+ require('./header.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if a file was uploaded successfully
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -10,11 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Image was saved successfully
             $imagePath = '/' . $targetFile; // Add a forward slash to the beginning of the path
 
-            // Include the database connection file
-            // require('connections/db.connect.php');
-            require('./header.php');
-
-            // Insert the image path and car_listing_id into the database
+            
             $carListingId = $_POST['car_listing_id'];
             $insertSql = "INSERT INTO images (path_image, car_listing_id) VALUES (:imagePath, :carListingId)";
             $insertStmt = $pdo->prepare($insertSql);

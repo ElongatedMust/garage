@@ -1,79 +1,93 @@
+/* Reset default margin and padding for all elements */
 * {
-    margin: 0%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
 }
 
 #navbar {
+    background-color: #333;
+    color: #fff;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(36, 36, 36);
-    text-align: center;
-    padding: 0 10px;
-    
+    align-items: center;
+    padding: 10px;
 }
 
-@media screen and (min-width: 768px) {
-    #SmallLogo {
-      display: none;
-    }
-  }
-  
-
-@media screen and (max-width: 768px) {
-    #navbar {
-        bottom: 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        background-color: rgb(56, 56, 56);
-        overflow: hidden;
-        position: fixed;
-    }
-
-    #leftS {
-        display: none;
-    }
-
-
+.logo {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
 }
-
-
 
 #leftS {
-    font-family: "Sofia", sans-serif;
-    font-size: 2rem;
+    display: none; 
 }
 
-#SmallLogo { 
-    font-family: "Sofia", sans-serif;
-    font-size: 2rem;
+#SmallLogo {
+    display: block; 
 }
 
+#menuIcon {
+    display: none; 
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
 
 #rightNav {
     display: flex;
-    justify-content: space-between;
-    gap: 1em;
     list-style: none;
-    font-size: 1.5rem;
-    font-family: "Sofia", sans-serif;
 }
 
-article { 
-    background-color: rgb(85, 85, 85);
+#rightNav li {
+    margin-right: 20px;
 }
 
+#rightNav li:last-child {
+    margin-right: 0;
+}
 
-
-a {
+#rightNav li a {
+    color: #fff;
     text-decoration: none;
-    color: white;
 }
 
-.wlcm { 
-    display: grid;
-    justify-content: center;
-    font-family: "Sofia", sans-serif;
-    font-size: 2rem;
-    color: rgb(255, 127, 80);
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    #leftS {
+        display: block; /* Show the left-side logo for mobile devices */
+    }
 
+    #SmallLogo {
+        display: none; /* Hide the small logo for mobile devices */
+    }
+
+    #menuIcon {
+        display: block; /* Show the menu icon for mobile devices */
+    }
+
+    #rightNav {
+        display: none; /* Hide the right navigation for mobile devices */
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        z-index: 1;
+        padding: 10px;
+    }
+
+    #navbar.active #rightNav {
+        display: flex; /* Show the drop-down navigation when the menu is active */
+    }
+
+    #rightNav li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }

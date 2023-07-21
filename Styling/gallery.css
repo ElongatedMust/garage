@@ -1,0 +1,48 @@
+/* Styling for the image gallery container */
+.gallery {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Styling for the carousel container */
+.carousel-container {
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+}
+
+/* Styling for each individual carousel slide */
+.carousel-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+}
+
+/* Styling for the carousel images */
+.image {
+    width: 100%;
+    height: auto;
+}
+
+/* Styling for the carousel navigation buttons */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.prev-btn,
+.next-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.prev-btn {
+    margin-right: 10px;
+}
+
+.next-btn {
+    margin-left: 10px;
+}

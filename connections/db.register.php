@@ -1,7 +1,15 @@
 <?php
-require ('connections/db.connect.php');
+require ('./header.php');
 
 $errors = [];
+
+// Define the isEmailExists function before using it in the validation checks
+function isEmailExists($pdo, $email) {
+    $stmt = $pdo->prepare('SELECT COUNT(*) FROM users WHERE email = :email');
+    $stmt->bindValue(':email', $email);
+    $stmt->execute();
+    return $stmt->fetchColumn() > 0;
+}
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
@@ -28,6 +36,11 @@ if (isset($_POST['submit'])) {
         $errors[] = 'Password must contain at least one special character.';
     }
 
+    // Check if the email already exists
+    if (isEmailExists($pdo, $email)) {
+        $errors[] = 'Email already exists. Please choose a different one.';
+    }
+
     if (!empty($errors)) {
         echo '<div class="error">';
         foreach ($errors as $error) {
@@ -38,7 +51,6 @@ if (isset($_POST['submit'])) {
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-          
             $statement = $pdo->prepare('INSERT INTO users(email, username, password) VALUES (:email, :username, :password)');
             $statement->bindValue(':email', $email);
             $statement->bindValue(':username', $username);
@@ -46,13 +58,9 @@ if (isset($_POST['submit'])) {
             $statement->execute();        
             echo 'User registered successfully.';
             header("Location: login.php");
-           // header("location:login.php");//
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
     }
 }
-
-
-//require 'header.php'//
 ?>

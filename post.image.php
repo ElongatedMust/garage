@@ -1,5 +1,5 @@
 <?php
-    require('header.php');
+    
     require('connections/db.image.post.php');
     
 ?>
