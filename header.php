@@ -32,7 +32,9 @@ $isAdmin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
 
         <div id="rightS">
             <ul id="rightNav">
+                <li><p>07.88.90.90.54</p></li>
                 <li><a href="heure.php">Nos Horaires</a></li>
+
                 <?php if ($isLoggedIn): ?>
                     <li><a href="adminpage.php">Dashboard</a></li>
                     <li><a href="car_upload.php">Voiture</a></li>
