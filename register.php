@@ -1,7 +1,8 @@
 
 <?php 
+
 require ('connections/db.register.php');
-require ('header.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,3 +38,5 @@ require ('header.php');
     </form>
 </body>
 </html>
+
+

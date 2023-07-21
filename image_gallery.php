@@ -8,11 +8,12 @@ if (isset($_GET['id'])) {
     $db = new Database;
     $pdo = $db->getPDO();
 
-    // Fetch all images for the given car listing ID
+    
     $sql = "SELECT * FROM images WHERE car_listing_id = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$listing_id]);
     $images = $stmt->fetchAll();
+   
 }
 ?>
 
@@ -34,5 +35,9 @@ if (isset($_GET['id'])) {
         }
         ?>
     </div>
+
+    
 </body>
+
+
 </html>

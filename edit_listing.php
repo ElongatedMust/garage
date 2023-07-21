@@ -1,28 +1,42 @@
 <?php
-require('connections/db.admin.php');
+require('header.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $listingId = $_POST['listing_id'];
 
-    // Retrieve the listing details from the car_listing table based on the listing ID
-    $selectListingQuery = "SELECT * FROM car_listing WHERE id = :listingId";
-    $stmt = $pdo->prepare($selectListingQuery);
-    $stmt->bindParam(':listingId', $listingId);
-    $stmt->execute();
-    $listing = $stmt->fetch();
 
-    if ($listing && isset($listing['model'])) {
-        // Display the form with input fields pre-populated with the listing details
-        echo '<form action="update_listing.php" method="post">';
-        echo '<input type="hidden" name="listing_id" value="' . $listing['id'] . '">';
-        echo 'Model: <input type="text" name="model" value="' . $listing['model'] . '"><br>';
-        echo 'Price: <input type="text" name="price" value="' . $listing['price'] . '"><br>';
-        echo 'Year: <input type="text" name="year" value="' . $listing['year'] . '"><br>';
-        echo 'KM: <input type="text" name="km" value="' . $listing['km'] . '"><br>';
-        echo '<input type="submit" name="update" value="Update">';
-        echo '</form>';
-    } else {
-        echo 'Listing not found or missing information.';
-    }
+    $sql = "SELECT * FROM contact WHERE id = :listingId";
+    $statement = $pdo->prepare($sql);
+    $statement->bindParam(':listingId', $listingId, PDO::PARAM_INT);
+    $statement->execute();
+    $contactData = $statement->fetch(PDO::FETCH_ASSOC);
+
+    
+    ?>
+    <form action="process_edit.php" method="POST">
+       
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" value="<?php echo $contactData['nom']; ?>" required>
+
+        <label for="prenom">Prenom:</label>
+        <input type="text" id="prenom" name="prenom" value="<?php echo $contactData['prenom']; ?>" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<?php echo $contactData['email']; ?>" required>
+
+        <label for="numero">Numero:</label>
+        <input type="text" id="numero" name="numero" value="<?php echo $contactData['numero']; ?>" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required><?php echo $contactData['message']; ?></textarea>
+
+       
+        <input type="hidden" name="listing_id" value="<?php echo $listingId; ?>">
+
+        <button type="submit">Save Changes</button>
+    </form>
+    <?php
 }
 ?>
+
+<link rel="stylesheet" href="styling/edit.css">

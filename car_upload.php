@@ -1,5 +1,5 @@
 <?php require('connections/db.admin.php'); ?>
-<?php require('header.php'); ?>
+
 <link rel="stylesheet" href="Styling/car_styling.css">
 
 <div class="container">
@@ -13,7 +13,7 @@
             <input type="submit" value="Upload">
         </form>
         <?php
-        // Validation and error messages
+        
         if (!empty($errors)) {
             echo '<ul class="error-messages">';
             foreach ($errors as $error) {
